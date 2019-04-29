@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TO DO</title>
+    <script src="./js/bundle.js"></script>
+    	<link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>TO DO</h1>
+      {{ intro }}
+      <form id="form" class="" action="index.html" method="">
+        <input v-model="toDoMsg" type="text">
+        <input style="display: block;" type="radio" name="priority" value="low"  v-model="toDoPriorityLOW"> Low<br>
+        <input style="display: block;" type="radio" name="priority" value="high" v-model="toDoPriorityHIGH"> High<br>
+        <button @click="addToList" type="button" name="form">add</button>
+      </form>
+      <div class="">
+        <ul>
+          <li v-for='(item, index) in items' :class="item.priority ? 'high' : 'low'">
+            <span>{{item.msg}}</span>
+            <button @click="complete(index)" v-if="!item.completed"> Complete Task </button>
+            <p v-if="item.completed"> Completed Task </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
